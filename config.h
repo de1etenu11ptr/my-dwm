@@ -65,8 +65,16 @@ static const Layout layouts[] = {
 static char dmenumon[2] =
 	"0"; /* component of dmenucmd, manipulated in spawn() */
 
+#include "custom/includes.h"
+#include "custom/constants.h"
+#include "custom/safe.h"
+#include "custom/logging.h"
+#include "custom/util.h"
+#include "custom/tagutil.h"
+
 #include "custom/terminal.h"
 #include "custom/volumecontrol.h"
+#include "custom/workspaces.h"
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
