@@ -12,7 +12,6 @@ sendalltag(int from, int to)
 		i++;
 	while ((from >> z) != 1)
 		z++;
-	debugprint("moving all clients from tag \"%d\" to tag \"%d\"\n", z + 1, i + 1);
 	Monitor *m;
 	Client *c;
 	Client *next;
@@ -36,7 +35,6 @@ sendalltag(int from, int to)
 int
 getfreetagpos()
 {
-	debugprint("searching for free tag in selected monitor\n");
 	Monitor *m;
 	Client *c;
 	unsigned int i;
@@ -54,7 +52,6 @@ getfreetagpos()
 			if (c->tags & tag)
 				goto tag_occupied;
 		emptytag = i;
-		debugprint("tag with no clients found (tag \"%d\")\n", i + 1);
 		break;
 	tag_occupied:;
 	}

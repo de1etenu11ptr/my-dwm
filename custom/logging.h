@@ -58,17 +58,6 @@ dprint(FILE *stream, const char *ctag, const char *fmt, va_list args)
 }
 
 void
-logprint(const char *fmt, ...)
-{
-	const char *ctag = LOGTAG;
-	va_list args;
-
-	va_start(args, fmt);
-	dprint(stdout, ctag, fmt, args);
-	va_end(args);
-}
-
-void
 debugprint(const char *fmt, ...)
 {
 	const char *ctag = DEBUGTAG;

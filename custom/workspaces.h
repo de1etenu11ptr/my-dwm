@@ -66,26 +66,22 @@ spawnworkspace(const Arg *arg)
 	int emptymaskpos;
 
 	if (arg->i >= nworkspaces) {
-		debugprint(
-			"only %d workspaces are available (requested %d which does not exist in interval [1, %d]).\n",
+		errorprint(
+			"only %d workspaces are available (requested %d which does not exist in interval [1, %d])\n",
 			nworkspaces, arg->i + 1, nworkspaces);
 		return;
 	}
 	const struct Workspace *w = workspaces + arg->i;
-	debugprint("lauching workspace \"%s\".\n", w->name);
 
 	if ((emptymaskpos = getfreetagpos()) == -1) {
-		debugprint("no tag with zero clients was found.\n");
+		debugprint("no tag with zero clients was found\n");
 		return;
 	}
 
-	debugprint("applying workspace layout.\n", w->name);
 	sendalltag(1 << 0, 1 << emptymaskpos);
 	view(&(const Arg){ .ui = 1 << 0 });
 	setlayout(&(const Arg){ .v = &layouts[0] });
 	applyworkspacerules(w->rules, w->nrules);
 
 	spawnprograms(w->programs, w->nprograms);
-
-	debugprint("done launching workspace \"%s\".\n", w->name);
 }
