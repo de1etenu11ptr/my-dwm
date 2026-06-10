@@ -66,7 +66,7 @@ spawnworkspace(const Arg *arg)
 	int emptymaskpos;
 
 	if (arg->i >= nworkspaces) {
-		errorprint(
+		printerror(
 			"only %d workspaces are available (requested %d which does not exist in interval [1, %d])\n",
 			nworkspaces, arg->i + 1, nworkspaces);
 		return;
@@ -74,7 +74,7 @@ spawnworkspace(const Arg *arg)
 	const struct Workspace *w = workspaces + arg->i;
 
 	if ((emptymaskpos = getfreetagpos()) == -1) {
-		debugprint("no tag with zero clients was found\n");
+		printdebug("no tag with zero clients was found\n");
 		return;
 	}
 

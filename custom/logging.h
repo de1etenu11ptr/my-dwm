@@ -58,7 +58,7 @@ dprint(FILE *stream, const char *ctag, const char *fmt, va_list args)
 }
 
 void
-debugprint(const char *fmt, ...)
+printdebug(const char *fmt, ...)
 {
 	const char *ctag = DEBUGTAG;
 	va_list args;
@@ -69,7 +69,7 @@ debugprint(const char *fmt, ...)
 }
 
 void
-errorprint(const char *fmt, ...)
+printerror(const char *fmt, ...)
 {
 	const char *ctag = ERRORTAG;
 	va_list args;
