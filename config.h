@@ -73,7 +73,7 @@ static char dmenumon[2] =
 #include "custom/tagutil.h"
 
 #include "custom/terminal.h"
-#include "custom/volumecontrol.h"
+#include "custom/volumecontrols.h"
 #include "custom/workspaces.h"
 
 static const Key keys[] = {
