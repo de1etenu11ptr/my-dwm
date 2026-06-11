@@ -1388,12 +1388,32 @@ restack(Monitor *m)
 void
 run(void)
 {
+	struct Point prev = { -1, -1 };
+
 	XEvent ev;
 	/* main event loop */
 	XSync(dpy, False);
-	while (running && !XNextEvent(dpy, &ev))
-		if (handler[ev.type])
-			handler[ev.type](&ev); /* call handler */
+	while (running) {
+		if (pointerscale == 1.0) {
+			if (XNextEvent(dpy, &ev))
+				goto done;
+			if (handler[ev.type])
+				handler[ev.type](&ev); /* call handler */
+		} else {
+			while (XPending(dpy)) {
+				if (XNextEvent(dpy, &ev))
+					goto done;
+				if (handler[ev.type])
+					handler[ev.type](
+						&ev);
+			}
+			if (pointerscale != 1.0)
+				scalepointermotion(&prev);
+			/* prevents 100% cpu usage */
+			usleep(REFRESH);
+		}
+	}
+done:;
 }
 
 void
