@@ -17,6 +17,3 @@ static const char *dmenucmd[] = { "/home/electro/bin/dmenu_cached",
 				  col_pl_pink,
 				  NULL };
 static const char *termcmd[] = { "kitty", NULL };
-
-/* TODO: Implement a terminal mode which has submappings
- * for different **terminal** programs/scripts */

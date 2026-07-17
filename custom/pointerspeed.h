@@ -30,7 +30,7 @@ crecttomon(int x, int y, int w, int h)
 }
 
 void
-boundedcoordinates(struct Point *cur, struct Point *prev)
+setboundedcoordinates(struct Point *cur, struct Point *prev)
 {
 	Monitor *m;
 
@@ -67,7 +67,7 @@ scalepointermotion(struct Point *prev)
 	if (delta.x != 0 || delta.y != 0) {
 		target.x = prev->x + (int)(delta.x * pointerscale);
 		target.y = prev->y + (int)(delta.y * pointerscale);
-		boundedcoordinates(&target, prev);
+		setboundedcoordinates(&target, prev);
 
 		XWarpPointer(dpy, None, root, 0, 0, 0, 0, target.x, target.y);
 
