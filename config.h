@@ -74,7 +74,9 @@ static char dmenumon[2] =
 #include "custom/tagutil.h"
 
 #include "custom/terminal.h"
+#include "custom/terminalmode.h"
 #include "custom/volumecontrols.h"
+#include "custom/mediacontrols.h"
 #include "custom/pointerspeed.h"
 #include "custom/workspaces.h"
 
@@ -109,8 +111,10 @@ static const Key keys[] = {
 			TAGKEYS(XK_9,
 				8){ MODKEY | ShiftMask, XK_q, quit, { 0 } },
 	VOLUMECONTROLS(),
+	MEDIACONTROLS(),
 	POINTERSPEED(),
 	SPAWNWORKSPACE(0),
+	TERMINALMODE(),
 };
 
 /* button definitions */
